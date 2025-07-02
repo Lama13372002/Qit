@@ -4,17 +4,17 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
     <meta content="width=device-width" name="viewport"/>
     <meta content="Framer 629c622" name="generator"/>
-    <title>Qitchen - Restaurant Framer Template</title>
+    <title>Qitchen - Restaurant Menu</title> <!-- Изменено -->
       <meta content="Qitchen embodies a sophisticated Restaurant Framer Template, tailored for dining establishments, restaurants, bars, cafes, coffee hubs, and food or beverage businesses." name="description"/>
       <meta content="https://framerusercontent.com/sites/WMTHkclhInIg23vs2Hbhf/searchIndex-AS98hA6JUgcg.json" name="framer-search-index"/>
       <link href="https://framerusercontent.com/images/SQZDQj2gDkUmN9upKjykPnd1NM.png" media="(prefers-color-scheme: light)" rel="icon"/>
       <link href="https://framerusercontent.com/images/SQZDQj2gDkUmN9upKjykPnd1NM.png" media="(prefers-color-scheme: dark)" rel="icon"/>
       <meta content="website" property="og:type"/>
-      <meta content="Qitchen - Restaurant Framer Template" property="og:title"/>
+      <meta content="Qitchen - Restaurant Menu" property="og:title"/> <!-- Изменено -->
       <meta content="Qitchen embodies a sophisticated Restaurant Framer Template, tailored for dining establishments, restaurants, bars, cafes, coffee hubs, and food or beverage businesses." property="og:description"/>
       <meta content="https://framerusercontent.com/images/xGiaa6XJMtLwGaER3ktbHa34.webp" property="og:image"/>
       <meta content="summary_large_image" name="twitter:card"/>
-      <meta content="Qitchen - Restaurant Framer Template" name="twitter:title"/>
+      <meta content="Qitchen - Restaurant Menu" name="twitter:title"/> <!-- Изменено -->
       <meta content="Qitchen embodies a sophisticated Restaurant Framer Template, tailored for dining establishments, restaurants, bars, cafes, coffee hubs, and food or beverage businesses." name="twitter:description"/>
       <meta content="https://framerusercontent.com/images/xGiaa6XJMtLwGaER3ktbHa34.webp" name="twitter:image"/>
       <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
@@ -25,7 +25,7 @@
       <link href="css/hamburger-menu.css" rel="stylesheet"/>
       <link href="css/modern-cards.css?v=1.0.1" rel="stylesheet"/>
       <link href="css/custom-header.css" rel="stylesheet"/>
-      <link href="../css/google-translate.css" rel="stylesheet"/>
+      <!-- <link href="../css/google-translate.css" rel="stylesheet"/> --> <!-- Удалено -->
       <link href="css/category-carousel.css" rel="stylesheet"/>
       <style data-framer-css="true" type="text/css">
       </style>
@@ -46,9 +46,9 @@
 
           <!-- Language Switcher -->
           <div class="language-switcher" style="position: relative; top: auto; right: auto; margin-right: 20px;">
-            <button data-google-lang="en" class="language-btn notranslate">EN</button>
-            <button data-google-lang="lv" class="language-btn notranslate">LV</button>
-            <button data-google-lang="ru" class="language-btn notranslate">RU</button>
+            <button class="language-btn language-btn-active">EN</button>
+            <button onclick="switchToMenuLanguagePage('lv')" class="language-btn">LV</button>
+            <button onclick="switchToMenuLanguagePage('ru')" class="language-btn">RU</button>
           </div>
 
           <!-- Logo -->
@@ -837,7 +837,7 @@
       </div>
       <div class="mobile-menu-content">
         <a href="../index.html" class="mobile-menu-item">Home</a>
-        <a href="../after-qr/after-qr.html" class="mobile-menu-item">Menu</a>
+        <a href="../after-qr/after-qr.html" class="mobile-menu-item">Menu</a> <!-- Эта ссылка ведет на after-qr, а не на само меню. Возможно, так и задумано -->
         <a href="../about" class="mobile-menu-item" style="display: none !important;">About</a>
       </div>
     </div>
@@ -852,41 +852,62 @@
     <!-- Session Manager -->
     <script src="../js/session-manager.js"></script>
 
-    <!-- Google Translate скрипты -->
-    <div id="google_translate_element" style="display: none;"></div>
-    <script src="../js/google-translate.js"></script>
-    <script src="//translate.google.com/translate_a/element.js?cb=TranslateInit"></script>
+    <!-- Google Translate скрипты УДАЛЕНЫ -->
+    <!-- <div id="google_translate_element" style="display: none;"></div> -->
+    <!-- <script src="../js/google-translate.js"></script> -->
+    <!-- <script src="//translate.google.com/translate_a/element.js?cb=TranslateInit"></script> -->
 
-    <!-- Инициализация сессии для menu.html -->
+    <!-- Инициализация сессии для menu.html и переключение языков -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Инициализируем сессию
             const session = sessionManager.initializeSession();
-
             if (!session) {
-                // Если нет сессии, перенаправляем на after-qr с модальным окном
-                window.location.href = '../after-qr/after-qr.html';
+                window.location.href = sessionManager.createSessionUrl('../after-qr/after-qr.html');
                 return;
             }
-
-            // Обновляем все ссылки с параметрами сессии
-            sessionManager.updateLinksWithSession();
-
-            // Дополнительно обновляем кнопку Back
-            const backButtons = document.querySelectorAll('a[href*="after-qr"]');
-            backButtons.forEach(button => {
-                const currentHref = button.getAttribute('href');
-                if (currentHref && !currentHref.includes('session=')) {
-                    const sessionUrl = sessionManager.createSessionUrl(currentHref);
-                    button.setAttribute('href', sessionUrl);
+             setTimeout(() => {
+                sessionManager.updateLinksWithSession();
+                const backButton = document.querySelector('header.custom-header .back-button-wrapper a.back-button');
+                if (backButton) {
+                    const originalHref = backButton.getAttribute('href').split('?')[0];
+                    backButton.href = sessionManager.createSessionUrl(originalHref);
                 }
-            });
-
-            console.log('Menu page initialized with session:', session);
+                const logoLink = document.querySelector('header.custom-header .logo-wrapper a.logo-link');
+                if (logoLink) {
+                    const originalHref = logoLink.getAttribute('href').split('?')[0];
+                    logoLink.href = sessionManager.createSessionUrl(originalHref);
+                }
+                const mobileMenuAfterQRLink = document.querySelector('.mobile-menu-content a[href*="after-qr.html"]');
+                if (mobileMenuAfterQRLink) {
+                    const originalHref = mobileMenuAfterQRLink.getAttribute('href').split('?')[0];
+                    mobileMenuAfterQRLink.href = sessionManager.createSessionUrl(originalHref);
+                }
+                const mobileMenuHomeLink = document.querySelector('.mobile-menu-content a[href*="index.html"]');
+                if (mobileMenuHomeLink) {
+                    const originalHref = mobileMenuHomeLink.getAttribute('href').split('?')[0];
+                    mobileMenuHomeLink.href = sessionManager.createSessionUrl(originalHref);
+                }
+            }, 150);
+            console.log('Menu page (EN) initialized with session:', session);
         });
-    </script>
 
-    <!-- Старые скрипты инициализации отключены, новая система MenuCards работает автономно -->
+        function switchToMenuLanguagePage(lang) {
+            let targetUrl;
+            if (lang === 'lv') {
+                alert('The Latvian version of the menu is not yet available.');
+                return;
+            } else if (lang === 'ru') {
+                targetUrl = sessionManager.createSessionUrl('ru/menu.html');
+            } else if (lang === 'en') {
+                targetUrl = sessionManager.createSessionUrl('../menu/menu.html');
+            } else {
+                targetUrl = sessionManager.createSessionUrl('../menu/menu.html');
+            }
+            if (targetUrl) {
+                window.location.href = targetUrl;
+            }
+        }
+    </script>
                                                                                                                              </iframe>
                                                                                                                             </body>
                                                                                                                           </html>
