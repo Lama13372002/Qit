@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="2025-06-20T15:11:36.882Z" name="download_date" />
+    <meta content="width=device-width" name="viewport"/>
+    <meta content="Framer 629c622" name="generator"/>
+    <title>Qitchen - Restaurant Framer Template</title>
+    <meta content="Qitchen embodies a sophisticated Restaurant Framer Template, tailored for dining establishments, restaurants, bars, cafes, coffee hubs, and food or beverage businesses." name="description"/>
+    <meta content="https://framerusercontent.com/sites/WMTHkclhInIg23vs2Hbhf/searchIndex-AS98hA6JUgcg.json" name="framer-search-index"/>
+    <link href="https://framerusercontent.com/images/SQZDQj2gDkUmN9upKjykPnd1NM.png" media="(prefers-color-scheme: light)" rel="icon"/>
+    <link href="https://framerusercontent.com/images/SQZDQj2gDkUmN9upKjykPnd1NM.png" media="(prefers-color-scheme: dark)" rel="icon"/>
+    <meta content="website" property="og:type"/>
+    <meta content="Qitchen - Restaurant Framer Template" property="og:title"/>
+    <meta content="Qitchen embodies a sophisticated Restaurant Framer Template, tailored for dining establishments, restaurants, bars, cafes, coffee hubs, and food or beverage businesses." property="og:description"/>
+    <meta content="https://framerusercontent.com/images/xGiaa6XJMtLwGaER3ktbHa34.webp" property="og:image"/>
+    <meta content="summary_large_image" name="twitter:card"/>
+    <meta content="Qitchen - Restaurant Framer Template" name="twitter:title"/>
+    <meta content="Qitchen embodies a sophisticated Restaurant Framer Template, tailored for dining establishments, restaurants, bars, cafes, coffee hubs, and food or beverage businesses." name="twitter:description"/>
+    <meta content="https://framerusercontent.com/images/xGiaa6XJMtLwGaER3ktbHa34.webp" name="twitter:image"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+    <meta content="max-image-preview:large" name="robots"/>
+    <link href="https://exquisite-delivers-167569.framer.app/" rel="canonical"/>
+    <meta content="https://exquisite-delivers-167569.framer.app/" property="og:url"/>
+    <link href="css/styles.css" rel="stylesheet"/>
+    <link href="css/hamburger-menu.css" rel="stylesheet"/>
+    <link href="css/new-card-styles.css" rel="stylesheet"/>
+    <link href="css/restaurant-card.css" rel="stylesheet"/>
+    <link href="css/hide-framer-elements.css" rel="stylesheet"/>
+    <link href="css/google-translate.css" rel="stylesheet"/>
+    <style data-framer-css="true" type="text/css">
+    </style>
+    <style>
+      /* Скрыть социальные сети в левой карточке с видео */
+      .framer-1cmpv3q {
+        display: none !important;
+      }
+
+      /* Overlay для затемнения фона */
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(8px);
+        z-index: 99998;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Мобильное меню */
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 320px;
+        max-width: 85vw;
+        height: 100vh;
+        background: linear-gradient(135deg, rgb(25, 26, 25) 0%, rgb(35, 36, 35) 50%, rgb(20, 21, 20) 100%);
+        backdrop-filter: blur(20px);
+        border-right: 2px solid rgba(239, 231, 210, 0.25);
+        z-index: 99999;
+        transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+        box-shadow: 2px 0 30px rgba(0, 0, 0, 0.5);
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .mobile-menu.active {
+        left: 0;
+      }
+
+      .mobile-menu-content {
+        padding: 20px 0 30px 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: calc(100% - 80px);
+        justify-content: flex-start;
+        gap: 6px;
+      }
+
+      .mobile-menu-item {
+        color: rgb(239, 231, 210);
+        text-decoration: none;
+        font-size: 16px;
+        font-family: "Satoshi", "Satoshi Placeholder", sans-serif;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 15px 25px;
+        margin: 0 15px 4px;
+        border-radius: 12px;
+        background-color: rgba(35, 35, 35, 0.6);
+        border: 1px solid rgba(239, 231, 210, 0.2);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mobile-menu-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 3px;
+        background: linear-gradient(180deg, rgb(239, 231, 210) 0%, rgba(239, 231, 210, 0.5) 100%);
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+      }
+
+      .mobile-menu-item:hover::before {
+        transform: scaleY(1);
+      }
+
+      .mobile-menu-item:hover,
+      .mobile-menu-item:active {
+        background-color: rgba(239, 231, 210, 0.08);
+        border-color: rgba(239, 231, 210, 0.3);
+        transform: translateX(10px);
+        color: rgb(255, 255, 255);
+      }
+
+      .mobile-menu-close {
+        position: relative;
+        top: 0;
+        right: 0;
+        color: rgb(239, 231, 210);
+        font-size: 24px;
+        cursor: pointer;
+        padding: 8px;
+        border: 1px solid rgba(239, 231, 210, 0.3);
+        border-radius: 8px;
+        background-color: rgba(40, 40, 40, 0.9);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        font-weight: 300;
+        line-height: 1;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-menu-close:hover {
+        background-color: rgba(239, 231, 210, 0.1);
+        border-color: rgb(239, 231, 210);
+        transform: scale(1.05);
+      }
+
+      /* Анимация для иконки гамбургера */
+      .hamburger-menu-btn {
+        transition: transform 0.3s ease !important;
+      }
+
+      .hamburger-menu-btn:hover {
+        transform: scale(1.05) !important;
+      }
+
+      .hamburger-menu-btn.active .framer-1nickyg {
+        transform: rotate(45deg) translate(5px, 5px) !important;
+      }
+
+      .hamburger-menu-btn.active .framer-15qmgh6 {
+        opacity: 0 !important;
+        transform: scale(0) !important;
+      }
+
+      .hamburger-menu-btn.active .framer-1kctzd1 {
+        transform: rotate(-45deg) translate(7px, -6px) !important;
+      }
+
+      .hamburger-menu-btn .framer-1nickyg,
+      .hamburger-menu-btn .framer-15qmgh6,
+      .hamburger-menu-btn .framer-1kctzd1 {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      }
+
+      /* Адаптивность для мобильных устройств */
+      @media (max-width: 480px) {
+        .mobile-menu {
+          width: 280px;
+          max-width: 90vw;
+        }
+
+        .mobile-menu-header {
+          padding: 20px 15px 15px;
+        }
+
+        .mobile-menu-content {
+          padding: 15px 0 25px 0;
+          gap: 4px;
+        }
+
+        .mobile-menu-item {
+          font-size: 15px;
+          padding: 14px 20px;
+          margin: 0 10px 3px;
+        }
+
+        .mobile-menu-close {
+          position: absolute !important;
+          top: 15px;
+          right: 15px;
+          width: 36px;
+          height: 36px;
+          font-size: 20px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .mobile-menu {
+          width: 260px;
+        }
+
+        .mobile-menu-item {
+          font-size: 14px;
+          padding: 12px 18px;
+          margin: 0 8px 2px;
+        }
+      }
+
+      /* Предотвращение прокрутки body когда меню открыто */
+      .menu-open {
+        overflow: hidden !important;
+      }
+
+      .mobile-menu-header {
+        padding: 25px 25px 15px;
+        border-bottom: 1px solid rgba(239, 231, 210, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mobile-menu-logo {
+        height: 28px;
+        width: auto;
+        filter: brightness(1.1);
+      }
+
+      /* Исправления для Safari iOS и адаптивность логотипа */
+      @media (max-width: 809px) {
+        /* Полностью переопределяем карточку для мобильных */
+        .restaurant-info-card {
+          height: auto !important;
+          min-height: 100% !important;
+          max-height: none !important;
+          overflow-y: auto !important;
+          overflow-x: hidden !important;
+          -webkit-overflow-scrolling: touch !important;
+          transform: translateZ(0) !important;
+          -webkit-transform: translateZ(0) !important;
+        }
+
+        .card-content {
+          height: auto !important;
+          min-height: 100% !important;
+          padding: 20px !important;
+          overflow: visible !important;
+          box-sizing: border-box !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: flex-start !important;
+          gap: 20px !important;
+        }
+
+        /* Логотип остается 110px */
+        .restaurant-card-logo,
+        .restaurant-info-card img[alt*="Logo"] {
+          height: 110px !important;
+          width: auto !important;
+          margin-bottom: 16px !important;
+        }
+
+        /* Убеждаемся что соц. сети видны */
+        .card-content > div:last-child {
+          margin-top: auto !important;
+          padding-bottom: 20px !important;
+        }
+
+        /* Уменьшаем отступ между логотипом и Working Hours на мобильных */
+        .card-content > div:first-child {
+          margin-bottom: -20px !important;
+        }
+      }
+
+      /* Для планшетов - логотип тоже 110px */
+      @media (min-width: 810px) and (max-width: 1199px) {
+        .restaurant-card-logo,
+        .restaurant-info-card img[alt*="Logo"] {
+          height: 110px !important;
+          width: auto !important;
+        }
+
+        /* Уменьшаем отступ между логотипом и Working Hours на планшетах */
+        .card-content > div:first-child {
+          margin-bottom: -20px !important;
+        }
+      }
+
+      /* Дополнительные исправления для Safari */
+      @supports (-webkit-appearance: none) {
+        @media (max-width: 809px) {
+          .restaurant-info-card {
+            -webkit-transform: translate3d(0, 0, 0) !important;
+            transform: translate3d(0, 0, 0) !important;
+            backface-visibility: hidden !important;
+            -webkit-backface-visibility: hidden !important;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script async="" data-fid="6a56fb0315ce29318e502463af8949778730c2853d33d57ee75535a147962b10" data-no-nt="" src="https://events.framer.com/script?v=2"></script>
+    <div data-framer-generated-page="" data-framer-hydrate-v2='{"routeId":"augiA20Il","localeId":"default","breakpoints":[{"hash":"72rtr7","mediaQuery":"(min-width: 1200px)"},{"hash":"1g6n99x","mediaQuery":"(min-width: 810px) and (max-width: 1199px)"},{"hash":"1vb5nd8","mediaQuery":"(max-width: 809px)"},{"hash":"zclkw6","mediaQuery":"(min-width: 1200px)"},{"hash":"1r1q3e1","mediaQuery":"(min-width: 810px) and (max-width: 1199px)"},{"hash":"1auuoho","mediaQuery":"(max-width: 809px)"}]}' data-framer-page-optimized-at="2025-06-19T15:40:53.744Z" data-framer-ssr-released-at="2025-06-12T12:32:04.789Z" id="main">
+      <div class="framer-azYRI framer-zclkw6" data-layout-template="true" style="min-height:100vh;width:auto">
+        <div class="ssr-variant hidden-zclkw6 hidden-1auuoho">
+          <div class="framer-1yvaye5-container" data-framer-layout-hint-center-x="true">
+            <div class="framer-ppkPa framer-x917yn framer-v-x917yn" data-framer-name="Desktop" style="background-color: rgb(10, 11, 10); border-radius: 12px; opacity: 1; display: none !important;">
+              <div class="framer-1xr4r8t-container" style="opacity: 1;">
+                <div class="framer-1pwiS framer-ef9byx framer-v-ef9byx hamburger-menu-btn" data-border="true" data-framer-name="Variant 1" data-highlight="true" style="--border-bottom-width: 1px; --border-color: var(--token-68c05b50-ca7b-4173-82aa-ed42aea1a9b4, rgb(51, 51, 48)); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; background-color: var(--token-cd2934a7-4e35-4347-a32c-9650fca4db23, rgba(24, 24, 24, 0.5)); height: 100%; width: 100%; border-radius: 8px; opacity: 1; cursor: pointer;" tabindex="0">
+                  <div class="framer-1jrpmsy" style="opacity: 1;">
+                    <div class="framer-1nickyg" data-framer-name="Menu Toggle Line" style="background-color: rgb(239, 230, 210); opacity: 1;">
+                    </div>
+                    <div class="framer-15qmgh6" data-framer-name="Menu Toggle Line" style="background-color: rgb(239, 230, 210); opacity: 1;">
+                    </div>
+                    <div class="framer-1kctzd1" data-framer-name="Menu Toggle Line" style="background-color: rgb(239, 230, 210); opacity: 1;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="framer-1un38sm-container" style="opacity: 1;">
+                <a class="framer-WP7ej framer-6xtryv framer-v-6xtryv framer-1ypskfr" data-framer-name="Default" data-framer-page-link-current="true" href="./index.html" style="opacity: 1; cursor: pointer;">
+                  <div class="framer-493dzc" data-framer-name="Logo" style="opacity: 1;">
+                    <div data-framer-background-image-wrapper="true" style="position: absolute; border-radius: inherit; inset: 0px;">
+                      <img alt="" decoding="async" height="63" src="images/Calliano2.svg" style="display: block; width: 100%; height: 100%; border-radius: inherit; object-position: center center; object-fit: cover;" width="237"/>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="framer-uw18uo" data-framer-name="Menu" style="opacity: 1;">
+                <div class="framer-1e6q382-container" style="opacity: 1;">
+                  <a class="framer-28Mcz framer-136wxrw framer-v-136wxrw framer-1s4epyd" data-border="true" data-framer-name="Variant 1" href="./after-qr/after-qr.html" style="--border-bottom-width: 1px; --border-color: rgba(51, 51, 48, 0); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; background-color: rgba(0, 0, 0, 0); border-radius: 8px; opacity: 1;">
+                    <div class="framer-uml6xa" data-framer-component-type="RichTextContainer" data-framer-name="Menu" style="outline: none; display: flex; flex-direction: column; justify-content: flex-start; flex-shrink: 0; --extracted-r6o4lv: var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210)); transform: none; opacity: 1;">
+                      <p class="framer-text" style='--font-selector: RlM7U2F0b3NoaS1yZWd1bGFy; --framer-font-family: "Satoshi", "Satoshi Placeholder", sans-serif; --framer-font-size: 12px; --framer-letter-spacing: 1px; --framer-line-height: 130%; --framer-text-color: var(--extracted-r6o4lv, var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210))); --framer-text-transform: uppercase;'>Menu</p>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="framer-1rkkrfi-container" style="opacity: 1;">
+                    <a class="framer-28Mcz framer-136wxrw framer-v-136wxrw framer-1s4epyd" data-border="true" data-framer-name="Variant 1" href="./about/about.html" style="--border-bottom-width: 1px; --border-color: rgba(51, 51, 48, 0); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; background-color: rgba(0, 0, 0, 0); border-radius: 8px; opacity: 1;">
+                      <div class="framer-uml6xa" data-framer-component-type="RichTextContainer" data-framer-name="Menu" style="outline: none; display: flex; flex-direction: column; justify-content: flex-start; flex-shrink: 0; --extracted-r6o4lv: var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210)); transform: none; opacity: 1;">
+                        <p class="framer-text" style='--font-selector: RlM7U2F0b3NoaS1yZWd1bGFy; --framer-font-family: "Satoshi", "Satoshi Placeholder", sans-serif; --framer-font-size: 12px; --framer-letter-spacing: 1px; --framer-line-height: 130%; --framer-text-color: var(--extracted-r6o4lv, var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210))); --framer-text-transform: uppercase;'>About</p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="framer-02KgG framer-GtNIV framer-72rtr7" data-framer-root="" style="min-height:100vh;width:auto;display:contents">
+                <main class="framer-1v0ihir" data-framer-name="Main Wrapper">
+                  <div class="framer-1om2fo9" data-framer-appear-id="1om2fo9" data-framer-name="Left" style="opacity: 1; transform: perspective(1200px); will-change: transform;">
+                    <div class="framer-1i14n1z" data-framer-name="Hero">
+                      <div class="framer-zzy2g3-container">
+                        <video autoplay="" loop="" muted="" playsinline="" preload="auto" src="video/video1.mp4" style="cursor:auto;width:100%;height:100%;border-radius:0px;display:block;object-fit:cover;background-color:rgba(0, 0, 0, 0);object-position:50% 50%">
+                        </video>
+                      </div>
+                      <div class="framer-155suxv" data-framer-name="Image Gradient">
+                      </div>
+                      <div class="ssr-variant hidden-1vb5nd8 hidden-72rtr7">
+                        <div class="framer-1d395yu" data-framer-appear-id="1d395yu" data-framer-component-type="RichTextContainer" style="outline: none; display: flex; flex-direction: column; justify-content: flex-start; opacity: 1; flex-shrink: 0; transform: perspective(1200px); will-change: transform;">
+                          <h1 class="framer-text framer-styles-preset-1wsimkd" data-styles-preset="pG0b7qPHS" style="--framer-text-alignment: center;"><br class="framer-text"/></h1>
+                          </div>
+                        </div>
+                        <div class="framer-1cmpv3q hidden-1vb5nd8" data-framer-name="Socials">
+                          <div class="framer-119uxzx" data-framer-name="Rounded Edge Top Left">
+                            <div aria-hidden="true" class="framer-dgzyzp" data-framer-component-type="SVG" data-framer-name="Path" style="image-rendering:pixelated;flex-shrink:0">
+                              <div class="svgContainer" style="width:100%;height:100%;aspect-ratio:inherit">
+                                <svg style="width:100%;height:100%;">
+                                  <use href="#svg9618415524"></use>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="framer-1ev8foi" data-framer-name="Rounded Edge Top Left">
+                            <div aria-hidden="true" class="framer-16pbgrm" data-framer-component-type="SVG" data-framer-name="Path" style="image-rendering:pixelated;flex-shrink:0">
+                              <div class="svgContainer" style="width:100%;height:100%;aspect-ratio:inherit">
+                                <svg style="width:100%;height:100%;">
+                                  <use href="#svg9618415524"></use>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="framer-16n4yov">
+                            <div class="ssr-variant hidden-1vb5nd8 hidden-72rtr7">
+                              <div class="framer-k10p4s-container">
+                                <a class="framer-rvhQB framer-115jsc1 framer-v-115jsc1 framer-11hr8ku" data-border="true" data-framer-name="Default" data-highlight="true" href="https://www.instagram.com/gola.design/" rel="noopener" style="--border-bottom-width: 1px; --border-color: var(--token-68c05b50-ca7b-4173-82aa-ed42aea1a9b4, rgba(218, 197, 167, 0.15)); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; background-color: rgba(0, 0, 0, 0); height: 100%; width: 100%; border-radius: 500px; opacity: 1;" tabindex="0" target="_blank">
+                                  <div class="framer-yjkc4m-container" style="opacity: 1;">
+                                    <div style="display: contents;">
+                                      <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" style="width: 14px; height: 14px; fill: rgb(239, 231, 210);">
+                                        <path d="M128,82a46,46,0,1,0,46,46A46.06,46.06,0,0,0,128,82Zm0,80a34,34,0,1,1,34-34A34,34,0,0,1,128,162ZM176,26H80A54.06,54.06,0,0,0,26,80v96a54.06,54.06,0,0,0,54,54h96a54.06,54.06,0,0,0,54-54V80A54.06,54.06,0,0,0,176,26Zm42,150a42,42,0,0,1-42,42H80a42,42,0,0,1-42-42V80A42,42,0,0,1,80,38h96a42,42,0,0,1,42,42ZM190,76a10,10,0,1,1-10-10A10,10,0,0,1,190,76Z"/>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="ssr-variant hidden-1vb5nd8 hidden-72rtr7">
+                              <div class="framer-r8qeru-container">
+                                <a class="framer-rvhQB framer-115jsc1 framer-v-115jsc1 framer-11hr8ku" data-border="true" data-framer-name="Default" data-highlight="true" href="https://templates.gola.io/" rel="noopener" style="--border-bottom-width: 1px; --border-color: var(--token-68c05b50-ca7b-4173-82aa-ed42aea1a9b4, rgba(218, 197, 167, 0.15)); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; background-color: rgba(0, 0, 0, 0); height: 100%; width: 100%; border-radius: 500px; opacity: 1;" tabindex="0" target="_blank">
+                                  <div class="framer-yjkc4m-container" style="opacity: 1;">
+                                    <div style="display: contents;">
+                                      <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" style="width: 14px; height: 14px; fill: rgb(239, 231, 210);">
+                                        <path d="M128,26A102,102,0,1,0,230,128,102.12,102.12,0,0,0,128,26Zm6,191.8V150h26a6,6,0,0,0,0-12H134V112a18,18,0,0,1,18-18h16a6,6,0,0,0,0-12H152a30,30,0,0,0-30,30v26H96a6,6,0,0,0,0,12h26v67.8a90,90,0,1,1,12,0Z"/>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="ssr-variant hidden-1vb5nd8 hidden-72rtr7">
+                              <div class="framer-1t05cga-container">
+                                <a class="framer-rvhQB framer-115jsc1 framer-v-115jsc1 framer-11hr8ku" data-border="true" data-framer-name="Default" href="https://twitter.com/gola99" rel="noopener" style="--border-bottom-width: 1px; --border-color: var(--token-68c05b50-ca7b-4173-82aa-ed42aea1a9b4, rgba(218, 197, 167, 0.15)); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; background-color: rgba(0, 0, 0, 0); height: 100%; width: 100%; border-radius: 500px; opacity: 1;" tabindex="0" target="_blank">
+                                  <div class="framer-yjkc4m-container" style="opacity: 1;">
+                                    <div style="display: contents;">
+                                      <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" style="width: 14px; height: 14px; fill: rgb(239, 231, 210);">
+                                        <path d="M245.54,69.71A6,6,0,0,0,240,66H208.4a46.6,46.6,0,0,0-40.33-24,44.93,44.93,0,0,0-32.31,13.12A45.92,45.92,0,0,0,122,88v8.66c-42-10-76.6-44.52-77-44.88A6,6,0,0,0,34.8,55.46c-4.25,47.22,9.42,78.75,21.64,96.89a107.71,107.71,0,0,0,23.07,25c-15.49,19-41.34,28.89-41.62,29a6,6,0,0,0-2.88,9C36,216.83,45.78,230,80,230c69.88,0,128.23-54,133.82-123.34l30.42-30.41A6,6,0,0,0,245.54,69.71ZM203.76,99.76a6,6,0,0,0-1.75,3.86C197.93,167.76,144.33,218,80,218c-14,0-22.76-2.41-28.06-4.8,11.3-5.68,29.72-16.88,41.05-33.87a6,6,0,0,0,.85-4.67A6,6,0,0,0,91,170.82c-.13-.08-13.13-7.86-25-25.72C52,124,45.31,98.43,46,68.88c14.88,12.6,45.57,35.09,81,41a6,6,0,0,0,7-5.92V88a34,34,0,0,1,10.19-24.34A33.05,33.05,0,0,1,167.93,54c13.43.17,26,8.37,31.24,20.4a6,6,0,0,0,5.5,3.6h20.84Z"/>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="framer-4pymwr" data-framer-name="Right">
+                      <div class="ssr-variant hidden-1vb5nd8 hidden-72rtr7">
+                        <div class="framer-eo2q79-container" data-framer-appear-id="eo2q79" style="opacity: 1; transform: perspective(1200px); will-change: transform;">
+                          <div class="restaurant-info-card" style="height: 100%; width: 100%; border-radius: 20px; opacity: 1; position: relative; overflow: auto; background: linear-gradient(135deg, rgb(45, 45, 45) 0%, rgb(55, 55, 55) 50%, rgb(40, 40, 40) 100%); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);">
+                            <!-- Language Switcher -->
+                            <div class="language-switcher">
+                                <button data-google-lang="en" class="language-btn notranslate">EN</button>
+                                <button data-google-lang="lv" class="language-btn notranslate">LV</button>
+                                <button data-google-lang="ru" class="language-btn notranslate">RU</button>
+                            </div>
+                            <!-- Card Content -->
+                            <div class="card-content" style="position: relative; height: 100%; padding: 32px; display: flex; flex-direction: column; justify-content: space-between;">
+                              <!-- Logo Section -->
+                              <div style="text-align: center; margin-bottom: 20px;">
+                                <img src="images/Calliano-logo_white.svg" alt="Qitchen Restaurant Logo" class="restaurant-card-logo" style="height: 110px; width: auto; filter: brightness(1.2);" />
+                              </div>
+                              <!-- Working Hours -->
+                              <div style="margin-bottom: 24px;">
+                                <h3 style="font-family: 'Forum', serif; font-size: 18px; font-weight: 400; color: rgb(239, 231, 210); margin-bottom: 16px; text-align: center; letter-spacing: 2px; text-transform: uppercase;">Working Hours</h3>
+                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(239, 231, 210, 0.1);">
+                                    <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: rgba(255, 255, 255, 0.95);">Monday</span>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgb(239, 231, 210); font-weight: 600;">11:00 — 22:00</span>
+                                      <span style="width: 6px; height: 6px; background-color: rgb(34, 197, 94); border-radius: 50%; opacity: 0.8;"></span>
+                                    </div>
+                                  </div>
+                                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; border-radius: 8px; background: rgba(255, 235, 210, 0.05); border: 1px solid rgba(239, 231, 210, 0.1);">
+                                    <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: rgba(255, 255, 255, 0.95);">Tuesday</span>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgb(239, 231, 210); font-weight: 600;">11:00 — 22:00</span>
+                                      <span style="width: 6px; height: 6px; background-color: rgb(34, 197, 94); border-radius: 50%; opacity: 0.8;"></span>
+                                    </div>
+                                  </div>
+                                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; border-radius: 8px; background: rgba(255, 255, 210, 0.05); border: 1px solid rgba(239, 231, 210, 0.1);">
+                                    <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: rgba(255, 255, 255, 0.95);">Wednesday</span>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgb(239, 231, 210); font-weight: 600;">11:00 — 22:00</span>
+                                      <span style="width: 6px; height: 6px; background-color: rgb(34, 197, 94); border-radius: 50%; opacity: 0.8;"></span>
+                                    </div>
+                                  </div>
+                                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; border-radius: 8px; background: rgba(255, 255, 210, 0.05); border: 1px solid rgba(239, 231, 210, 0.1);">
+                                    <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: rgba(255, 255, 255, 0.95);">Thursday</span>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgb(239, 231, 210); font-weight: 600;">11:00 — 22:00</span>
+                                      <span style="width: 6px; height: 6px; background-color: rgb(34, 197, 94); border-radius: 50%; opacity: 0.8;"></span>
+                                    </div>
+                                  </div>
+                                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; border-radius: 8px; background: rgba(255, 255, 210, 0.08); border: 1px solid rgba(239, 231, 210, 0.15);">
+                                    <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: rgba(255, 255, 255, 0.95);">Friday</span>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgb(239, 231, 210); font-weight: 600;">11:00 — 23:00</span>
+                                      <span style="width: 6px; height: 6px; background-color: rgb(34, 197, 94); border-radius: 50%; opacity: 1;"></span>
+                                    </div>
+                                  </div>
+                                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; border-radius: 8px; background: rgba(255, 255, 210, 0.08); border: 1px solid rgba(239, 231, 210, 0.15);">
+                                    <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: rgba(255, 255, 255, 0.95);">Saturday</span>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgb(239, 231, 210); font-weight: 600;">11:00 — 23:00</span>
+                                      <span style="width: 6px; height: 6px; background-color: rgb(34, 197, 94); border-radius: 50%; opacity: 1;"></span>
+                                    </div>
+                                  </div>
+                                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; border-radius: 8px; background: rgba(255, 255, 210, 0.03); border: 1px solid rgba(239, 231, 210, 0.08);">
+                                    <span style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: rgba(255, 255, 255, 0.8);">Sunday</span>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgba(239, 231, 210, 0.8); font-weight: 600;">12:00 — 21:00</span>
+                                      <span style="width: 6px; height: 6px; background-color: rgb(234, 179, 8); border-radius: 50%; opacity: 0.8;"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- Social Media -->
+                              <div style="margin-top: auto;">
+                                <h3 style="font-family: 'Forum', serif; font-size: 16px; font-weight: 400; color: rgb(239, 231, 210); margin-bottom: 16px; text-align: center; letter-spacing: 2px; text-transform: uppercase;">Follow Us</h3>
+                                <div style="display: flex; justify-content: center; gap: 12px;">
+                                  <a href="#" data-social="instagram" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1px solid rgba(239, 231, 210, 0.3); border-radius: 50%; background-color: rgba(0, 0, 0, 0); transition: all 0.3s ease; text-decoration: none;">
+                                    <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" style="width: 14px; height: 14px; fill: rgb(239, 231, 210);">
+                                      <path d="M128,82a46,46,0,1,0,46,46A46.06,46.06,0,0,0,128,82Zm0,80a34,34,0,1,1,34-34A34,34,0,0,1,128,162ZM176,26H80A54.06,54.06,0,0,0,26,80v96a54.06,54.06,0,0,0,54,54h96a54.06,54.06,0,0,0,54-54V80A54.06,54.06,0,0,0,176,26Zm42,150a42,42,0,0,1-42,42H80a42,42,0,0,1-42-42V80A42,42,0,0,1,80,38h96a42,42,0,0,1,42,42ZM190,76a10,10,0,1,1-10-10A10,10,0,0,1,190,76Z"/>
+                                    </svg>
+                                  </a>
+                                  <a href="#" data-social="facebook" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1px solid rgba(239, 231, 210, 0.3); border-radius: 50%; background-color: rgba(0, 0, 0, 0); transition: all 0.3s ease; text-decoration: none;">
+                                    <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" style="width: 14px; height: 14px; fill: rgb(239, 231, 210);">
+                                      <path d="M128,26A102,102,0,1,0,230,128,102.12,102.12,0,0,0,128,26Zm6,191.8V150h26a6,6,0,0,0,0-12H134V112a18,18,0,0,1,18-18h16a6,6,0,0,0,0-12H152a30,30,0,0,0-30,30v26H96a6,6,0,0,0,0,12h26v67.8a90,90,0,1,1,12,0Z"/>
+                                    </svg>
+                                  </a>
+                                  <a href="#" data-social="twitter" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1px solid rgba(239, 231, 210, 0.3); border-radius: 50%; background-color: rgba(0, 0, 0, 0); transition: all 0.3s ease; text-decoration: none;">
+                                    <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" style="width: 14px; height: 14px; fill: rgb(239, 231, 210);">
+                                      <path d="M245.54,69.71A6,6,0,0,0,240,66H208.4a46.6,46.6,0,0,0-40.33-24,44.93,44.93,0,0,0-32.31,13.12A45.92,45.92,0,0,0,122,88v8.66c-42-10-76.6-44.52-77-44.88A6,6,0,0,0,34.8,55.46c-4.25,47.22,9.42,78.75,21.64,96.89a107.71,107.71,0,0,0,23.07,25c-15.49,19-41.34,28.89-41.62,29a6,6,0,0,0-2.88,9C36,216.83,45.78,230,80,230c69.88,0,128.23-54,133.82-123.34l30.42-30.41A6,6,0,0,0,245.54,69.71ZM203.76,99.76a6,6,0,0,0-1.75,3.86C197.93,167.76,144.33,218,80,218c-14,0-22.76-2.41-28.06-4.8,11.3-5.68,29.72-16.88,41.05-33.87a6,6,0,0,0,.85-4.67A6,6,0,0,0,91,170.82c-.13-.08-13.13-7.86-25-25.72C52,124,45.31,98.43,46,68.88c14.88,12.6,45.57,35.09,81,41a6,6,0,0,0,7-5.92V88a34,34,0,0,1,10.19-24.34A33.05,33.05,0,0,1,167.93,54c13.43.17,26,8.37,31.24,20.4a6,6,0,0,0,5.5,3.6h20.84Z"/>
+                                    </svg>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <link fetchpriority="low" href="https://framerusercontent.com/sites/WMTHkclhInIg23vs2Hbhf/chunk-ROSELVJL.mjs" rel="modulepreload"/>
+                          <link fetchpriority="low" href="https://framerusercontent.com/sites/WMTHkclhInIg23vs2Hbhf/chunk-YCB5WALT.mjs" rel="modulepreload"/>
+                          <link fetchpriority="low" href="https://framerusercontent.com/sites/WMTHkclhInIg23vs2Hbhf/chunk-HZL4YIMB.mjs" rel="modulepreload"/>
+                          <link fetchpriority="low" href="https://framerusercontent.com/sites/WMTHkclhInIg23vs2Hbhf/chunk-A3IIQ6X3.mjs" rel="modulepreload"/>
+                          <link fetchpriority="low" href="https://framerusercontent.com/sites/WMTHkclhInIg23vs2Hbhf/chunk-42U43NKG.mjs" rel="modulepreload"/>
+                          <link fetchpriority="low" href="https://framerusercontent.com/sites/WMTHkclhInIg23vs2Hbhf/H43A040d_cry0mI3UHtRsDcylgU9Ah2evsz-HkAknTQ.RUKXJFF5.mjs" rel="modulepreload"/>
+                          <link fetchpriority="low" href="https://framerusercontent.com/sites/WMTHkclhInIg23vs2Hbhf/chunk-DUF3A3UE.mjs" rel="modulepreload"/>
+                          <link fetchpriority="low" href="https://framerusercontent.com/sites/WMTHkclhInIg23vs2Hbhf/chunk-XOAVPFBG.mjs" rel="modulepreload"/>
+                          <link fetchpriority="low" href="https://framerusercontent.com/sites/WMTHkclhInIg23vs2Hbhf/chunk-QUAOZAIM.mjs" rel="modulepreload"/>
+                          <link fetchpriority="low" href="https://framerusercontent.com/sites/WMTHkclhInIg23vs2Hbhf/chunk-LJGKFHML.mjs" rel="modulepreload"/>
+                          <link fetchpriority="low" href="https://framerusercontent.com/sites/WMTHkclhInIg23vs2Hbhf/script_main.7D7NQE3D.mjs" rel="modulepreload"/>
+                          <div aria-hidden="true" id="svg-templates" style="position: absolute; overflow: hidden; bottom: 0; left: 0; width: 0; height: 0; z-index: 0; contain: strict">
+                            <svg id="svg9618415524" viewBox="0 0 24 24">
+                              <path d="M 24 24 L 24 0 C 24 13.255 13.255 24 0 24 Z" fill="var(--token-4321a524-8651-4268-85f9-e884d8cb6223, rgb(10, 11, 10))"></path>
+                            </svg>
+                          </div>
+
+                          <script>
+                            function openMobileMenu() {
+                              const menu = document.getElementById('mobileMenu');
+                              const overlay = document.getElementById('mobileMenuOverlay');
+                              const hamburger = document.querySelector('.hamburger-menu-btn');
+
+                              menu.classList.add('active');
+                              overlay.classList.add('active');
+                              document.body.classList.add('menu-open');
+
+                              if (hamburger) {
+                                hamburger.classList.add('active');
+                              }
+                            }
+
+                            function closeMobileMenu() {
+                              const menu = document.getElementById('mobileMenu');
+                              const overlay = document.getElementById('mobileMenuOverlay');
+                              const hamburger = document.querySelector('.hamburger-menu-btn');
+
+                              menu.classList.remove('active');
+                              overlay.classList.remove('active');
+                              document.body.classList.remove('menu-open');
+
+                              if (hamburger) {
+                                hamburger.classList.remove('active');
+                              }
+                            }
+
+                            // Добавляем обработчик клика на гамбургер-меню
+                            document.addEventListener('DOMContentLoaded', function() {
+                              const hamburgerBtn = document.querySelector('.hamburger-menu-btn');
+                              if (hamburgerBtn) {
+                                hamburgerBtn.addEventListener('click', function(e) {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  openMobileMenu();
+                                });
+                              }
+
+                              // Закрытие по ESC
+                              document.addEventListener('keydown', function(e) {
+                                if (e.key === 'Escape') {
+                                  closeMobileMenu();
+                                }
+                              });
+
+                              // Закрытие по клику на фон
+                              const menu = document.getElementById('mobileMenu');
+                              const overlay = document.getElementById('mobileMenuOverlay');
+
+                              if (menu) {
+                                menu.addEventListener('click', function(e) {
+                                  if (e.target === menu) {
+                                    closeMobileMenu();
+                                  }
+                                });
+                              }
+
+                              if (overlay) {
+                                overlay.addEventListener('click', function(e) {
+                                  e.preventDefault();
+                                  closeMobileMenu();
+                                });
+                              }
+
+                              // Предотвращаем закрытие при клике на элементы меню
+                              const menuItems = document.querySelectorAll('.mobile-menu-item');
+                              menuItems.forEach(item => {
+                                item.addEventListener('click', function() {
+                                  closeMobileMenu();
+                                });
+                              });
+                            });
+                          </script>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay для затемнения фона -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobileMenu" style="display: none !important;">
+      <div class="mobile-menu-header">
+        <img src="images/Calliano2.svg" alt="Qitchen Restaurant Logo" class="mobile-menu-logo" />
+        <div class="mobile-menu-close" onclick="closeMobileMenu()">×</div>
+      </div>
+      <div class="mobile-menu-content">
+        <a href="./after-qr/after-qr.html" class="mobile-menu-item">Menu</a>
+        <a href="./about/about.html" class="mobile-menu-item">About</a>
+      </div>
+    </div>
+    <script src="js/hamburger-menu.js"></script>
+    <script src="js/working-hours.js"></script>
+    <script src="js/social-links-loader.js"></script>
+    <!-- Google Translate скрипты -->
+    <div id="google_translate_element" style="display: none;"></div>
+    <script src="js/google-translate.js"></script>
+    <script src="//translate.google.com/translate_a/element.js?cb=TranslateInit"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+{
+    "pageTitle": "About",
+    "hero": {
+        "backgroundImage": "https:\/\/i.postimg.cc\/FsNtKQK4\/image-002.webp",
+        "title": "About"
+    },
+    "mainSection": {
+        "title": "Sushi Artistry ",
+        "description": "Where culinary craftsmanship meets modern elegance. Indulge in the finest sushi, expertly curated to elevate your dining experience."
+    },
+    "slider1": {
+        "images": [
+            "https:\/\/i.postimg.cc\/yNJtG1LF\/image-003.webp",
+            "https:\/\/i.postimg.cc\/Zq9t8YJg\/image-004.webp",
+            "https:\/\/i.postimg.cc\/Xq4zzn0n\/image-005.webp"
+        ]
+    },
+    "awards": {
+        "tripAdvisor": {
+            "title": "Trip Advisor",
+            "subtitle": "Best Sushi"
+        },
+        "michelinGuide": {
+            "title": "Michelin Guide",
+            "subtitle": "Quality Food"
+        },
+        "starDining": {
+            "title": "Start Dining",
+            "subtitle": "Cool vibe"
+        }
+    },
+    "slider2": {
+        "images": [
+            "https:\/\/i.postimg.cc\/4db8tjHq\/image-008.webp",
+            "https:\/\/i.postimg.cc\/SRSgGVWs\/image-009.webp",
+            "https:\/\/i.postimg.cc\/44PL3kgh\/image-010.webp"
+        ]
+    },
+    "ourStory": {
+        "title": "Our Story",
+        "description": "Founded with a passion for culinary excellence, Qitchen's journey began in the heart of Prague. Over years, it evolved into a haven for sushi enthusiasts, celebrated for its artful mastery and devotion to redefining gastronomy."
+    },
+    "header": {
+        "logo": ""
+    },
+    "backgroundImage": "https:\/\/i.postimg.cc\/3NfFFh8S\/image-013.jpg"
+}

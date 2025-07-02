@@ -1,0 +1,52 @@
+{
+    "title": "Working Hours",
+    "social_links": {
+        "instagram": "https:\/\/yandex.com\/",
+        "facebook": "https:\/\/yandex.com\/",
+        "twitter": "https:\/\/yandex.com\/"
+    },
+    "days": [
+        {
+            "name": "Monday",
+            "nameRu": "Понедельник",
+            "time": "11:00 — 22:00",
+            "status": "green"
+        },
+        {
+            "name": "Tuesday",
+            "nameRu": "Вторник",
+            "time": "11:00 — 22:00",
+            "status": "yellow"
+        },
+        {
+            "name": "Wednesday",
+            "nameRu": "Среда",
+            "time": "11:00 — 22:00",
+            "status": "yellow"
+        },
+        {
+            "name": "Thursday",
+            "nameRu": "Четверг",
+            "time": "11:00 — 22:00",
+            "status": "green"
+        },
+        {
+            "name": "Friday",
+            "nameRu": "Пятница",
+            "time": "11:00 — 23:00",
+            "status": "green"
+        },
+        {
+            "name": "Saturday",
+            "nameRu": "Суббота",
+            "time": "11:00 — 23:00",
+            "status": "green"
+        },
+        {
+            "name": "Sunday",
+            "nameRu": "Воскресенье",
+            "time": "12:00 — 21:00",
+            "status": "yellow"
+        }
+    ]
+}

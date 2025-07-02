@@ -1,0 +1,330 @@
+/* Современные стили для карточек меню */
+
+.modern-card-container {
+    margin-bottom: 2rem;
+}
+
+.modern-menu-card {
+    background: linear-gradient(135deg, rgba(24, 24, 24, 0.95) 0%, rgba(18, 18, 18, 0.98) 100%);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(239, 230, 210, 0.1);
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.modern-menu-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(239, 230, 210, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modern-menu-card:hover::before {
+    opacity: 1;
+}
+
+.card-image-container {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.card-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0.9) contrast(1.1);
+}
+
+.modern-menu-card:hover .card-image {
+    transform: scale(1.08);
+    filter: brightness(1) contrast(1.2);
+}
+
+.spicy-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #ff6b35 0%, #ff4757 100%);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+    animation: spicyPulse 2s infinite ease-in-out;
+}
+
+@keyframes spicyPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.card-content {
+    padding: 24px;
+    position: relative;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 20px;
+}
+
+.item-name {
+    color: var(--token-b0d5b115-8d5e-4849-a7e4-d3bb5b253c70, rgb(239, 230, 210));
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+    flex: 1;
+    background: linear-gradient(135deg, #efe6d2 0%, #f5f2ea 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.price-tag {
+    background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+    color: #1a1a1a;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    min-width: 60px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.price-tag::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+.modern-menu-card:hover .price-tag::before {
+    animation: shimmer 0.6s ease-out;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+}
+
+.item-description {
+    color: var(--token-797a2fb4-2d14-46eb-9fb6-f38c1a9a545e, rgb(245, 242, 234));
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.modern-menu-card:hover .item-description {
+    opacity: 1;
+}
+
+.card-footer {
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+.card-divider {
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(239, 230, 210, 0.3) 20%,
+        rgba(212, 175, 55, 0.6) 50%,
+        rgba(239, 230, 210, 0.3) 80%,
+        transparent 100%
+    );
+    border-radius: 1px;
+    transition: all 0.3s ease;
+}
+
+.modern-menu-card:hover .card-divider {
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(239, 230, 210, 0.5) 10%,
+        rgba(212, 175, 55, 1) 50%,
+        rgba(239, 230, 210, 0.5) 90%,
+        transparent 100%
+    );
+    transform: scaleX(1.05);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .card-image-container {
+        height: 180px;
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .item-name {
+        font-size: 1.2rem;
+    }
+
+    .price-tag {
+        font-size: 1rem;
+        padding: 6px 12px;
+    }
+
+    .item-description {
+        font-size: 0.9rem;
+    }
+
+    .card-header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .price-tag {
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    .modern-card-container {
+        margin-bottom: 1.5rem;
+    }
+
+    .card-image-container {
+        height: 160px;
+    }
+
+    .card-content {
+        padding: 16px;
+    }
+
+    .item-name {
+        font-size: 1.1rem;
+    }
+
+    .spicy-badge {
+        top: 10px;
+        right: 10px;
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+/* Улучшенная анимация для loading состояния */
+.modern-menu-card.loading {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.modern-menu-card.loaded {
+    animation: cardSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Специальные эффекты для премиум блюд */
+.modern-menu-card[data-premium="true"] {
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    background: linear-gradient(135deg, rgba(24, 24, 24, 0.95) 0%, rgba(28, 25, 20, 0.98) 100%);
+}
+
+.modern-menu-card[data-premium="true"]::before {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+}
+
+/* Исправление для заголовков категорий */
+.framer-WbkJq .framer-3oegc5 {
+    min-width: 200px !important;
+    width: auto !important;
+    flex-shrink: 0 !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+.framer-WbkJq .framer-10tk5ia {
+    width: 100% !important;
+    max-width: none !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+}
+
+/* Мобильные стили для заголовков категорий */
+@media (max-width: 809px) {
+    .framer-WbkJq .framer-3oegc5 {
+        min-width: 180px !important;
+        width: 100% !important;
+        max-width: 300px !important;
+        text-align: center !important;
+        flex: 1 !important;
+    }
+
+    .framer-WbkJq .framer-10tk5ia {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 10px !important;
+    }
+
+    .framer-WbkJq .framer-styles-preset-12lj5ox:not(.rich-text-wrapper),
+    .framer-WbkJq .framer-styles-preset-12lj5ox.rich-text-wrapper h3 {
+        font-size: 26px !important;
+        line-height: 115% !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .framer-WbkJq .framer-3oegc5 {
+        min-width: 120px !important;
+        width: 100% !important;
+        max-width: 250px !important;
+    }
+
+    .framer-WbkJq .framer-styles-preset-12lj5ox:not(.rich-text-wrapper),
+    .framer-WbkJq .framer-styles-preset-12lj5ox.rich-text-wrapper h3 {
+        font-size: 22px !important;
+        line-height: 110% !important;
+    }
+}

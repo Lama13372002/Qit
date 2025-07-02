@@ -1,0 +1,115 @@
+{
+    "pageTitle": "Menu",
+    "hero": {
+        "backgroundImage": "https:\/\/i.postimg.cc\/FsNtKQK4\/image-002.webp",
+        "title": "Menu"
+    },
+    "categories": [
+        {
+            "id": "maki",
+            "name": "Maki",
+            "items": [
+                {
+                    "id": "spicy-tuna-maki",
+                    "name": "Spicy Tuna Maki",
+                    "price": "$5",
+                    "description": "A tantalizing blend of spicy tuna, cucumber, and avocado, harmoniously rolled in nori and seasoned rice.",
+                    "image": "https:\/\/i.postimg.cc\/d19vwnGp\/image-002.webp",
+                    "spicy": true
+                },
+                {
+                    "id": "salmon-maki",
+                    "name": "Salmon Maki",
+                    "price": "$5",
+                    "description": "Fresh salmon wrapped in perfectly seasoned rice and nori seaweed.",
+                    "image": "https:\/\/i.postimg.cc\/d19vwnGp\/image-002.webp",
+                    "spicy": false
+                }
+            ]
+        },
+        {
+            "id": "urmaki",
+            "name": "Uramaki",
+            "items": [
+                {
+                    "id": "volcano-delight",
+                    "name": "Volcano Delight",
+                    "price": "$12",
+                    "description": "Creamy crab salad, avocado, and cucumber rolled inside, topped with spicy tuna and drizzled with fiery sriracha sauce.",
+                    "image": "https:\/\/i.postimg.cc\/d19vwnGp\/image-002.webp",
+                    "spicy": true
+                }
+            ]
+        },
+        {
+            "id": "category-1751401795736-3623",
+            "name": "ARES",
+            "items": [
+                {
+                    "id": "item-1751463672846",
+                    "name": "Marakuya",
+                    "price": "$213",
+                    "description": "wdaw dsad saf",
+                    "image": "https:\/\/via.placeholder.com\/150x150?text=No+Image",
+                    "spicy": false
+                }
+            ]
+        },
+        {
+            "id": "category-1751401842188-529",
+            "name": "ZARE",
+            "items": [
+                {
+                    "id": "item-1751463682169",
+                    "name": "Marakuya",
+                    "price": "$12",
+                    "description": "sda fsfas f",
+                    "image": "https:\/\/via.placeholder.com\/150x150?text=No+Image",
+                    "spicy": false
+                }
+            ]
+        },
+        {
+            "id": "category-1751401855611-1229",
+            "name": "PSA",
+            "items": [
+                {
+                    "id": "item-1751463689583",
+                    "name": "Marakuya",
+                    "price": "$12",
+                    "description": "sdafsdfasdf",
+                    "image": "https:\/\/via.placeholder.com\/150x150?text=No+Image",
+                    "spicy": false
+                }
+            ]
+        },
+        {
+            "id": "category-1751401866279-338",
+            "name": "SARS",
+            "items": [
+                {
+                    "id": "item-1751463760490",
+                    "name": "Marakuya",
+                    "price": "$12",
+                    "description": "sd sf sdfg sdgf",
+                    "image": "https:\/\/via.placeholder.com\/150x150?text=No+Image",
+                    "spicy": false
+                }
+            ]
+        },
+        {
+            "id": "category-1751401874045-5807",
+            "name": "FARE",
+            "items": [
+                {
+                    "id": "item-1751463768268",
+                    "name": "Marakuya",
+                    "price": "$12",
+                    "description": "sdafa sdf dsg dfg",
+                    "image": "https:\/\/via.placeholder.com\/150x150?text=No+Image",
+                    "spicy": false
+                }
+            ]
+        }
+    ]
+}

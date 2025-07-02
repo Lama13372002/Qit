@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ панель - Управление сайтом</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1 id="adminTitle">Админ панель - Рабочие часы</h1>
+            <div class="admin-navigation">
+                <button id="workingHoursTab" class="nav-tab active">Рабочие часы</button>
+                <button id="aboutTab" class="nav-tab">Страница About</button>
+                <button id="menuTab" class="nav-tab">Меню</button>
+                <button id="qrTab" class="nav-tab">QR-коды столиков</button>
+            </div>
+            <div class="admin-actions">
+                <button id="saveBtn" class="btn btn-primary">Сохранить изменения</button>
+                <a href="../index.html" class="btn btn-secondary">Вернуться на сайт</a>
+            </div>
+        </header>
+
+        <main class="admin-main">
+            <!-- Контейнер для рабочих часов -->
+            <div id="workingHoursContainer">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Настройка рабочих часов</h2>
+                        <p>Измените время работы и статусы для каждого дня недели</p>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="title">Заголовок секции:</label>
+                            <input type="text" id="title" value="Working Hours" class="form-control">
+                        </div>
+
+                        <div class="card social-links-card">
+                            <div class="card-header">
+                                <h3>Ссылки на социальные сети</h3>
+                                <p>Настройте ссылки для кнопок социальных сетей в разделе "Follow Us"</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="instagramLink">Instagram:</label>
+                                    <input type="url" id="instagramLink" class="form-control" placeholder="https://www.instagram.com/your_account/">
+                                </div>
+                                <div class="form-group">
+                                    <label for="facebookLink">Facebook:</label>
+                                    <input type="url" id="facebookLink" class="form-control" placeholder="https://www.facebook.com/your_page/">
+                                </div>
+                                <div class="form-group">
+                                    <label for="twitterLink">Twitter:</label>
+                                    <input type="url" id="twitterLink" class="form-control" placeholder="https://twitter.com/your_account">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="days-container" id="daysContainer">
+                            <!-- Дни недели будут загружены через JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Контейнер для About страницы -->
+            <div id="aboutFormContainer" style="display: none;">
+                <!-- Форма About будет загружена через JavaScript -->
+            </div>
+
+            <!-- Контейнер для Menu страницы -->
+            <div id="menuFormContainer" style="display: none;">
+                <!-- Форма Menu будет загружена через JavaScript -->
+            </div>
+
+            <!-- Контейнер для QR-кодов столиков -->
+            <div id="qrFormContainer" style="display: none;">
+                <!-- Форма QR-кодов будет загружена через JavaScript -->
+            </div>
+
+            <div class="preview-card">
+                <h3>Предварительный просмотр</h3>
+                <div class="preview-content" id="previewContent">
+                    <!-- Предварительный просмотр -->
+                </div>
+            </div>
+        </main>
+
+        <div class="status-message" id="statusMessage"></div>
+    </div>
+
+    <!-- Подключаем основной JS -->
+    <script src="js/admin.js"></script>
+    <!-- Подключаем JS для About -->
+    <script src="js/about-admin.js"></script>
+    <!-- Подключаем JS для Menu -->
+    <script src="js/menu-admin.js"></script>
+    <!-- Подключаем JS для QR-кодов -->
+    <script src="js/qr-admin.js"></script>
+    <!-- Скрипт для управления навигацией -->
+    <script>
+        let currentPanel = 'workingHours';
+        let workingHoursPanel = null;
+        let aboutPanel = null;
+        let menuPanel = null;
+        let qrPanel = null;
+        let qrAdmin = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Инициализируем панель рабочих часов
+            workingHoursPanel = new AdminPanel();
+
+            // Обработчики навигации
+            document.getElementById('workingHoursTab').addEventListener('click', () => {
+                switchToWorkingHours();
+            });
+
+            document.getElementById('aboutTab').addEventListener('click', () => {
+                switchToAbout();
+            });
+
+            document.getElementById('menuTab').addEventListener('click', () => {
+                switchToMenu();
+            });
+
+            document.getElementById('qrTab').addEventListener('click', () => {
+                switchToQR();
+            });
+
+            // Обработчик сохранения в зависимости от текущей панели
+            document.getElementById('saveBtn').addEventListener('click', async () => {
+                if (currentPanel === 'workingHours' && workingHoursPanel) {
+                    await workingHoursPanel.saveData();
+                } else if (currentPanel === 'about' && aboutPanel) {
+                    await aboutPanel.saveData();
+                } else if (currentPanel === 'menu' && menuPanel) {
+                    await menuPanel.saveData();
+                } else if (currentPanel === 'qr' && qrPanel) {
+                    await qrPanel.saveData();
+                }
+            });
+        });
+
+        function switchToWorkingHours() {
+            currentPanel = 'workingHours';
+
+            // Обновляем заголовок
+            document.getElementById('adminTitle').textContent = 'Админ панель - Рабочие часы';
+
+            // Обновляем активный таб
+            document.getElementById('workingHoursTab').classList.add('active');
+            document.getElementById('aboutTab').classList.remove('active');
+            document.getElementById('menuTab').classList.remove('active');
+            document.getElementById('qrTab').classList.remove('active');
+
+            // Показываем/скрываем контейнеры
+            document.getElementById('workingHoursContainer').style.display = 'block';
+            document.getElementById('aboutFormContainer').style.display = 'none';
+            document.getElementById('menuFormContainer').style.display = 'none';
+            document.getElementById('qrFormContainer').style.display = 'none';
+
+            // Обновляем превью
+            if (workingHoursPanel) {
+                workingHoursPanel.renderPreview();
+            }
+        }
+
+        function switchToAbout() {
+            currentPanel = 'about';
+
+            // Обновляем заголовок
+            document.getElementById('adminTitle').textContent = 'Админ панель - Страница About';
+
+            // Обновляем активный таб
+            document.getElementById('aboutTab').classList.add('active');
+            document.getElementById('workingHoursTab').classList.remove('active');
+            document.getElementById('menuTab').classList.remove('active');
+            document.getElementById('qrTab').classList.remove('active');
+
+            // Показываем/скрываем контейнеры
+            document.getElementById('workingHoursContainer').style.display = 'none';
+            document.getElementById('aboutFormContainer').style.display = 'block';
+            document.getElementById('menuFormContainer').style.display = 'none';
+            document.getElementById('qrFormContainer').style.display = 'none';
+
+            // Инициализируем About панель если еще не создана
+            if (!aboutPanel) {
+                aboutPanel = new AboutAdminPanel();
+            } else {
+                aboutPanel.renderPreview();
+            }
+        }
+
+        function switchToMenu() {
+            currentPanel = 'menu';
+
+            // Обновляем заголовок
+            document.getElementById('adminTitle').textContent = 'Админ панель - Меню';
+
+            // Обновляем активный таб
+            document.getElementById('menuTab').classList.add('active');
+            document.getElementById('workingHoursTab').classList.remove('active');
+            document.getElementById('aboutTab').classList.remove('active');
+            document.getElementById('qrTab').classList.remove('active');
+
+            // Показываем/скрываем контейнеры
+            document.getElementById('workingHoursContainer').style.display = 'none';
+            document.getElementById('aboutFormContainer').style.display = 'none';
+            document.getElementById('menuFormContainer').style.display = 'block';
+            document.getElementById('qrFormContainer').style.display = 'none';
+
+            // Инициализируем Menu панель если еще не создана
+            if (!menuPanel) {
+                menuPanel = new MenuAdminPanel();
+            } else {
+                menuPanel.renderPreview();
+            }
+        }
+
+        function switchToQR() {
+            currentPanel = 'qr';
+
+            // Обновляем заголовок
+            document.getElementById('adminTitle').textContent = 'Админ панель - QR-коды столиков';
+
+            // Обновляем активный таб
+            document.getElementById('qrTab').classList.add('active');
+            document.getElementById('workingHoursTab').classList.remove('active');
+            document.getElementById('aboutTab').classList.remove('active');
+            document.getElementById('menuTab').classList.remove('active');
+
+            // Показываем/скрываем контейнеры
+            document.getElementById('workingHoursContainer').style.display = 'none';
+            document.getElementById('aboutFormContainer').style.display = 'none';
+            document.getElementById('menuFormContainer').style.display = 'none';
+            document.getElementById('qrFormContainer').style.display = 'block';
+
+            // Инициализируем QR-коды столиков
+            if (!qrPanel) {
+                qrPanel = new QRAdminPanel();
+                qrAdmin = qrPanel; // Устанавливаем глобальную переменную для доступа из HTML
+            } else {
+                qrPanel.renderPreview();
+            }
+        }
+    </script>
+</body>
+</html>

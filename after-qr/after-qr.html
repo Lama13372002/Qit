@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Services - Qitchen</title>
+    <link href="../css/styles.css" rel="stylesheet"/>
+    <link href="../css/google-translate.css" rel="stylesheet"/>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(239, 231, 210, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(239, 231, 210, 0.3), 0 0 60px rgba(239, 231, 210, 0.1); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(10, 11, 10);
+            font-family: "Satoshi", "Satoshi Placeholder", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('images/8G8Y8b1ZHwFvDzVUQQlr4waN1DI.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 40%, rgba(239, 231, 210, 0.03) 0%, rgba(10, 11, 10, 0.9) 50%, rgba(10, 11, 10, 0.95) 100%);
+            z-index: 1;
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(239, 231, 210, 0.6);
+            border-radius: 50%;
+            animation: sparkle 4s infinite ease-in-out;
+        }
+
+        .services-card {
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(145deg, rgba(24, 24, 24, 0.98), rgba(15, 15, 15, 0.95));
+            border: 2px solid rgba(239, 231, 210, 0.3);
+            border-radius: 24px;
+            padding: 70px 50px;
+            max-width: 550px;
+            width: 90%;
+            backdrop-filter: blur(20px);
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.7),
+                inset 0 1px 1px rgba(239, 231, 210, 0.1),
+                0 0 60px rgba(239, 231, 210, 0.05);
+            animation: fadeIn 1s ease-out, glow 6s infinite ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-card::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg,
+                rgba(239, 231, 210, 0.4) 0%,
+                rgba(207, 190, 145, 0.6) 25%,
+                rgba(239, 231, 210, 0.4) 50%,
+                rgba(207, 190, 145, 0.6) 75%,
+                rgba(239, 231, 210, 0.4) 100%);
+            border-radius: 24px;
+            z-index: -1;
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        .card-title {
+            text-align: center;
+            background: linear-gradient(135deg, rgb(239, 231, 210) 0%, rgb(207, 190, 145) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            animation: fadeIn 1.2s ease-out 0.3s backwards;
+        }
+
+        .card-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgb(239, 231, 210), transparent);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .service-button {
+            background: linear-gradient(145deg, rgba(239, 231, 210, 0.08), rgba(239, 231, 210, 0.03));
+            border: 1px solid rgba(239, 231, 210, 0.2);
+            border-radius: 16px;
+            padding: 28px 40px;
+            color: rgb(239, 231, 210);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            animation: fadeIn 1s ease-out backwards;
+        }
+
+        .service-button:nth-child(1) { animation-delay: 0.6s; }
+        .service-button:nth-child(2) { animation-delay: 0.8s; }
+        .service-button:nth-child(3) { animation-delay: 1.0s; }
+
+        .service-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(239, 231, 210, 0.1),
+                rgba(207, 190, 145, 0.15),
+                rgba(239, 231, 210, 0.1),
+                transparent);
+            transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .service-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(239, 231, 210, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .service-button:hover {
+            background: linear-gradient(145deg, rgba(239, 231, 210, 0.15), rgba(207, 190, 145, 0.1));
+            border-color: rgb(239, 231, 210);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.4),
+                0 5px 20px rgba(239, 231, 210, 0.2),
+                inset 0 1px 1px rgba(239, 231, 210, 0.1);
+            color: rgb(255, 250, 240);
+        }
+
+        .service-button:hover::before {
+            left: 100%;
+        }
+
+        .service-button:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .service-button:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            z-index: 3;
+            background: linear-gradient(145deg, rgba(24, 24, 24, 0.9), rgba(15, 15, 15, 0.8));
+            border: 1px solid rgba(239, 231, 210, 0.3);
+            border-radius: 12px;
+            padding: 16px 24px;
+            color: rgb(239, 231, 210);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(15px);
+            animation: fadeIn 1s ease-out 0.2s backwards;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(145deg, rgba(239, 231, 210, 0.1), rgba(207, 190, 145, 0.05));
+            border-color: rgb(239, 231, 210);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(239, 231, 210, 0.1);
+        }
+
+        /* Добавляем иконки */
+        .service-button .icon {
+            display: inline-block;
+            margin-right: 12px;
+            font-size: 24px;
+            vertical-align: middle;
+        }
+
+        /* Стили для модальных окон */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, rgba(24, 24, 24, 0.98), rgba(15, 15, 15, 0.95));
+            border: 2px solid rgba(239, 231, 210, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content h2 {
+            color: rgb(239, 231, 210);
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .modal-content p {
+            color: rgba(239, 231, 210, 0.8);
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .modal-buttons .btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 150px;
+        }
+
+        .modal-buttons .btn.btn-primary {
+            background: linear-gradient(145deg, rgb(239, 231, 210), rgb(207, 190, 145));
+            color: rgb(24, 24, 24);
+        }
+
+        .modal-buttons .btn.btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(239, 231, 210, 0.3);
+        }
+
+        .modal-buttons .btn.btn-secondary {
+            background: linear-gradient(145deg, rgba(239, 231, 210, 0.1), rgba(239, 231, 210, 0.05));
+            color: rgb(239, 231, 210);
+            border: 1px solid rgba(239, 231, 210, 0.3);
+        }
+
+        .modal-buttons .btn.btn-secondary:hover {
+            background: linear-gradient(145deg, rgba(239, 231, 210, 0.2), rgba(239, 231, 210, 0.1));
+            transform: translateY(-2px);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: rgba(239, 231, 210, 0.6);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: rgb(239, 231, 210);
+        }
+
+        /* Wi-Fi блок */
+        .wifi-info {
+            margin-top: 40px;
+            padding: 25px;
+            background: linear-gradient(145deg, rgba(239, 231, 210, 0.05), rgba(239, 231, 210, 0.02));
+            border: 1px solid rgba(239, 231, 210, 0.2);
+            border-radius: 16px;
+            animation: fadeIn 1.5s ease-out 1.2s backwards;
+        }
+
+        .wifi-info h3 {
+            color: rgb(239, 231, 210);
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .wifi-password {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 16px;
+            color: rgba(239, 231, 210, 0.8);
+        }
+
+        .wifi-password code {
+            background: rgba(239, 231, 210, 0.1);
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            color: rgb(239, 231, 210);
+            font-weight: bold;
+            border: 1px solid rgba(239, 231, 210, 0.2);
+            user-select: all;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .wifi-password code:hover {
+            background: rgba(239, 231, 210, 0.15);
+            border-color: rgb(239, 231, 210);
+        }
+
+        /* Анимации */
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+
+        /* Адаптивность для модальных окон */
+        @media (max-width: 768px) {
+            .services-card {
+                padding: 50px 30px;
+                margin: 20px;
+                max-width: 90%;
+            }
+
+            .card-title {
+                font-size: 28px;
+                margin-bottom: 40px;
+            }
+
+            .service-button {
+                padding: 24px 32px;
+                font-size: 18px;
+            }
+
+            .back-button {
+                top: 20px;
+                left: 20px;
+                padding: 12px 18px;
+                font-size: 13px;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+
+            .modal-content h2 {
+                font-size: 20px;
+            }
+
+            .modal-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .modal-buttons .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .wifi-info {
+                margin-top: 30px;
+                padding: 20px 15px;
+            }
+
+            .wifi-password {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .wifi-password code {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <!-- Летающие частицы -->
+    <div class="floating-particles">
+        <div class="particle" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="top: 50%; left: 80%; animation-delay: 1s;"></div>
+        <div class="particle" style="top: 80%; left: 20%; animation-delay: 2s;"></div>
+        <div class="particle" style="top: 30%; left: 70%; animation-delay: 3s;"></div>
+        <div class="particle" style="top: 70%; left: 90%; animation-delay: 1.5s;"></div>
+        <div class="particle" style="top: 10%; left: 50%; animation-delay: 2.5s;"></div>
+    </div>
+
+
+
+    <!-- Модальное окно для несканированного QR -->
+    <div id="scanQRModal" class="modal">
+        <div class="modal-content">
+            <h2>🔒 Access Restricted</h2>
+            <p>Please scan the QR code on your table to access restaurant services.</p>
+            <button onclick="window.location.href='../index.html'" class="btn btn-primary">Return to Home</button>
+        </div>
+    </div>
+
+    <!-- Модальные окна для функций -->
+    <div id="waiterModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('waiterModal')">&times;</span>
+            <h2>🙋‍♂️ Call Waiter</h2>
+            <div class="modal-buttons">
+                <button onclick="callWaiterAction('make_order')" class="btn btn-primary">📝 Make Order</button>
+                <button onclick="showBillModal()" class="btn btn-secondary">💳 Request Bill</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="billModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('billModal')">&times;</span>
+            <h2>💰 Payment Method</h2>
+            <div class="modal-buttons">
+                <button onclick="callWaiterAction('request_bill_card')" class="btn btn-primary">💳 Card</button>
+                <button onclick="callWaiterAction('request_bill_cash')" class="btn btn-secondary">💵 Cash</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="shishaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('shishaModal')">&times;</span>
+            <h2>💨 Call Shisha Master</h2>
+            <div class="modal-buttons">
+                <button onclick="callShishaAction('call_shisha')" class="btn btn-primary">💨 Call Shisha</button>
+                <button onclick="callShishaAction('change_coal')" class="btn btn-secondary">🔥 Change Coal</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="services-card">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            <button class="language-btn language__img_active notranslate">EN</button>
+            <button onclick="switchToLanguagePage('lv')" class="language-btn notranslate">LV</button>
+            <button onclick="switchToLanguagePage('ru')" class="language-btn notranslate">RU</button>
+        </div>
+        <h1 class="card-title">Restaurant Services</h1>
+        <div class="services-grid">
+            <a href="../menu/menu.html" class="service-button">
+                <span class="icon">📋</span>
+                View Menu
+            </a>
+            <a href="#" class="service-button" onclick="showWaiterModal()">
+                <span class="icon">🙋‍♂️</span>
+                Call Waiter
+            </a>
+            <a href="#" class="service-button" onclick="showShishaModal()">
+                <span class="icon">💨</span>
+                Call Shisha Master
+            </a>
+        </div>
+
+        <!-- Пароль Wi-Fi -->
+        <div class="wifi-info">
+            <h3>📶 Wi-Fi Access</h3>
+            <div class="wifi-password">
+                <span>Password: </span>
+                <code id="wifiPassword">Loading...</code>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Глобальные переменные
+        let currentSession = null;
+        let currentTable = null;
+        let sessionCheckFailures = 0;
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            checkSessionAndInitialize();
+        });
+
+        async function checkSessionAndInitialize() {
+            // Используем SessionManager для инициализации
+            const session = sessionManager.initializeSession();
+
+            if (!session) {
+                showScanQRModal();
+                return;
+            }
+
+            // Проверяем валидность сессии на сервере
+            const isValid = await sessionManager.validateSessionOnServer();
+
+            if (isValid) {
+                currentSession = session.sessionId;
+                currentTable = session.tableNumber;
+                loadWiFiPassword();
+
+                // Обновляем ссылки с параметрами сессии
+                sessionManager.updateLinksWithSession();
+            } else {
+                showScanQRModal();
+            }
+        }
+
+        async function loadWiFiPassword() {
+            try {
+                const response = await fetch('/api/settings.php?key=wifi_password');
+                const result = await response.json();
+
+                if (result.success) {
+                    document.getElementById('wifiPassword').textContent = result.value || 'Ask staff';
+                }
+            } catch (error) {
+                console.error('Error loading Wi-Fi password:', error);
+                document.getElementById('wifiPassword').textContent = 'Ask staff';
+            }
+        }
+
+        function showScanQRModal() {
+            document.getElementById('scanQRModal').style.display = 'flex';
+        }
+
+        function showWaiterModal() {
+            if (!currentSession) {
+                showScanQRModal();
+                return;
+            }
+            document.getElementById('waiterModal').style.display = 'flex';
+        }
+
+        function showBillModal() {
+            closeModal('waiterModal');
+            document.getElementById('billModal').style.display = 'flex';
+        }
+
+        function showShishaModal() {
+            if (!currentSession) {
+                showScanQRModal();
+                return;
+            }
+            document.getElementById('shishaModal').style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        async function callWaiterAction(action) {
+            await sendNotification(action);
+            closeModal('waiterModal');
+            closeModal('billModal');
+        }
+
+        async function callShishaAction(action) {
+            await sendNotification(action);
+            closeModal('shishaModal');
+        }
+
+        async function sendNotification(type) {
+            if (!currentSession || !currentTable) {
+                showScanQRModal();
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/notifications.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'create',
+                        session_id: currentSession,
+                        table_number: parseInt(currentTable),
+                        type: type
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showNotification(getSuccessMessage(type), 'success');
+                } else {
+                    if (result.error.includes('expired')) {
+                        showNotification('Your session has expired. Please scan the QR code again.', 'error');
+                        setTimeout(() => showScanQRModal(), 2000);
+                    } else {
+                        showNotification('Error sending request: ' + result.error, 'error');
+                    }
+                }
+            } catch (error) {
+                console.error('Error sending notification:', error);
+                showNotification('Network error. Please try again.', 'error');
+            }
+        }
+
+        function getSuccessMessage(type) {
+            const messages = {
+                'make_order': '📝 Waiter is coming to your table to take your order',
+                'request_bill_card': '💳 Waiter is bringing the bill for payment by card',
+                'request_bill_cash': '💵 Waiter is bringing the bill for payment by cash',
+                'call_shisha': '💨 Waiter is coming to your table to call the shisha master',
+                'change_coal': '🔥 Shisha master is changing the coal in your shisha'
+            };
+            return messages[type] || 'Request sent';
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 50px;
+                right: 50px;
+                background: linear-gradient(145deg, rgba(24, 24, 24, 0.95), rgba(15, 15, 15, 0.9));
+                border: 1px solid rgba(239, 231, 210, 0.3);
+                border-radius: 16px;
+                padding: 20px 30px;
+                color: rgb(239, 231, 210);
+                backdrop-filter: blur(20px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+                z-index: 1000;
+                animation: slideIn 0.5s ease-out;
+                max-width: 350px;
+                font-size: 14px;
+                line-height: 1.4;
+            `;
+
+            if (type === 'error') {
+                notification.style.borderColor = 'rgba(220, 53, 69, 0.5)';
+                notification.style.background = 'linear-gradient(145deg, rgba(40, 20, 20, 0.95), rgba(30, 15, 15, 0.9))';
+            } else if (type === 'success') {
+                notification.style.borderColor = 'rgba(40, 167, 69, 0.5)';
+                notification.style.background = 'linear-gradient(145deg, rgba(20, 40, 20, 0.95), rgba(15, 30, 15, 0.9))';
+            }
+
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.5s ease-in';
+                setTimeout(() => notification.remove(), 500);
+            }, 5000);
+        }
+
+        // Закрытие модальных окон при клике вне их
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        // Периодическая проверка валидности сессии (каждые 5 минут)
+        setInterval(async function() {
+            if (currentSession && currentTable) {
+                // Сначала проверяем клиентскую сессию
+                const clientSession = sessionManager.getSession();
+                if (!clientSession) {
+                    showNotification('Your session has expired. Please scan the QR code again.', 'error');
+                    setTimeout(() => showScanQRModal(), 2000);
+                    return;
+                }
+
+                // Затем проверяем серверную сессию (менее критично)
+                try {
+                    const response = await fetch(`/api/sessions.php?action=validate&session_id=${encodeURIComponent(currentSession)}&table=${encodeURIComponent(currentTable)}`);
+                    const result = await response.json();
+
+                    if (!result.success || !result.valid) {
+                        console.warn('Server session validation failed:', result);
+                        // Не показываем ошибку сразу, даем еще несколько попыток
+                        sessionCheckFailures = (sessionCheckFailures || 0) + 1;
+                        if (sessionCheckFailures >= 3) {
+                            showNotification('Your session has expired. Please scan the QR code again.', 'error');
+                            setTimeout(() => showScanQRModal(), 2000);
+                        }
+                    } else {
+                        sessionCheckFailures = 0; // Сбрасываем счетчик при успешной проверке
+                    }
+                } catch (error) {
+                    console.error('Error checking session:', error);
+                    // При ошибке сети не прерываем сессию, только логируем
+                }
+            }
+        }, 300000); // Проверяем каждые 5 минут
+
+        // Функция для переключения на другие языковые страницы
+        function switchToLanguagePage(lang) {
+            let targetUrl;
+            if (lang === 'lv') {
+                targetUrl = sessionManager.createSessionUrl('../lv/after-qr.html');
+            } else if (lang === 'ru') {
+                targetUrl = sessionManager.createSessionUrl('../ru/after-qr.html');
+            }
+            window.location.href = targetUrl;
+        }
+    </script>
+
+    <!-- Google Translate скрипты -->
+    <div id="google_translate_element" style="display: none;"></div>
+    <script src="../js/session-manager.js"></script>
+    <script src="../js/google-translate.js"></script>
+    <script src="//translate.google.com/translate_a/element.js?cb=TranslateInit"></script>
+</body>
+</html>

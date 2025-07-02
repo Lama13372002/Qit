@@ -1,0 +1,192 @@
+/* Плавающая карусель категорий */
+.category-carousel {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  z-index: 999;
+  background: rgba(10, 11, 10, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(239, 231, 210, 0.1);
+  border-radius: 20px;
+  padding: 15px 0;
+  transform: translateY(-100%);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.category-carousel.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.carousel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 0 20px;
+}
+
+.carousel-wrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  background: rgba(239, 231, 210, 0.05);
+}
+
+.carousel-items {
+  display: flex;
+  gap: 12px;
+  transition: transform 0.3s ease;
+  padding: 10px 15px;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  scroll-behavior: smooth;
+  touch-action: pan-x;
+}
+
+.carousel-items::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.carousel-item {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(239, 231, 210, 0.1), rgba(239, 231, 210, 0.05));
+  border: 1px solid rgba(239, 231, 210, 0.2);
+  border-radius: 20px;
+  color: rgb(239, 231, 210);
+  text-decoration: none;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(239, 231, 210, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.carousel-item:hover {
+  background: linear-gradient(135deg, rgba(239, 231, 210, 0.2), rgba(239, 231, 210, 0.1));
+  border-color: rgba(239, 231, 210, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(239, 231, 210, 0.1);
+}
+
+.carousel-item:hover::before {
+  left: 100%;
+}
+
+.carousel-item.active {
+  background: linear-gradient(135deg, rgb(239, 231, 210), rgba(239, 231, 210, 0.9));
+  color: rgb(10, 11, 10);
+  border-color: rgb(239, 231, 210);
+  box-shadow: 0 8px 25px rgba(239, 231, 210, 0.2);
+}
+
+.carousel-nav {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(239, 231, 210, 0.1), rgba(239, 231, 210, 0.05));
+  border: 1px solid rgba(239, 231, 210, 0.2);
+  color: rgb(239, 231, 210);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.carousel-nav:hover {
+  background: linear-gradient(135deg, rgba(239, 231, 210, 0.2), rgba(239, 231, 210, 0.1));
+  border-color: rgba(239, 231, 210, 0.4);
+  transform: scale(1.1);
+}
+
+.carousel-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: scale(1);
+}
+
+.carousel-nav svg {
+  transition: transform 0.2s ease;
+}
+
+.carousel-nav:hover svg {
+  transform: scale(1.2);
+}
+
+/* Анимация появления */
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.category-carousel.animate-in {
+  animation: slideInDown 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .category-carousel {
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    padding: 10px 0;
+    border-radius: 15px;
+  }
+
+  .carousel-container {
+    padding: 0 10px;
+    gap: 8px;
+  }
+
+  .carousel-nav {
+    width: 35px;
+    height: 35px;
+    display: none; /* Скрываем стрелки на мобильных, оставляем только touch */
+  }
+
+  .carousel-wrapper {
+    border-radius: 12px;
+  }
+
+  .carousel-items {
+    padding: 8px 12px;
+    gap: 10px;
+  }
+
+  .carousel-item {
+    padding: 6px 12px;
+    font-size: 11px;
+    border-radius: 15px;
+  }
+}

@@ -1,0 +1,203 @@
+/* Overlay для затемнения фона */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 99998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Мобильное меню */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 320px;
+  max-width: 85vw;
+  height: 100vh;
+  background: linear-gradient(135deg, rgb(25, 26, 25) 0%, rgb(35, 36, 35) 50%, rgb(20, 21, 20) 100%);
+  backdrop-filter: blur(20px);
+  border-right: 2px solid rgba(239, 231, 210, 0.25);
+  z-index: 99999;
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  box-shadow: 2px 0 30px rgba(0, 0, 0, 0.5);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.mobile-menu.active {
+  left: 0;
+}
+
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 25px 20px;
+  border-bottom: 1px solid rgba(239, 231, 210, 0.15);
+  background: rgba(15, 15, 15, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.mobile-menu-logo {
+  height: 35px;
+  width: auto;
+  object-fit: contain;
+}
+
+.mobile-menu-content {
+  padding: 20px 0 30px 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 80px);
+  justify-content: flex-start;
+  gap: 6px;
+}
+
+.mobile-menu-item {
+  color: rgb(239, 231, 210);
+  text-decoration: none;
+  font-size: 16px;
+  font-family: "Satoshi", "Satoshi Placeholder", sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 15px 25px;
+  margin: 0 15px 4px;
+  border-radius: 12px;
+  background-color: rgba(35, 35, 35, 0.6);
+  border: 1px solid rgba(239, 231, 210, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-menu-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: linear-gradient(180deg, rgb(239, 231, 210) 0%, rgba(239, 231, 210, 0.5) 100%);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu-item:hover::before {
+  transform: scaleY(1);
+}
+
+.mobile-menu-item:hover,
+.mobile-menu-item:active {
+  background-color: rgba(239, 231, 210, 0.08);
+  border-color: rgba(239, 231, 210, 0.3);
+  transform: translateX(10px);
+  color: rgb(255, 255, 255);
+}
+
+.mobile-menu-close {
+  position: relative;
+  top: 0;
+  right: 0;
+  color: rgb(239, 231, 210);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  border: 1px solid rgba(239, 231, 210, 0.3);
+  border-radius: 8px;
+  background-color: rgba(40, 40, 40, 0.9);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  font-weight: 300;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-close:hover {
+  background-color: rgba(239, 231, 210, 0.1);
+  border-color: rgb(239, 231, 210);
+  transform: scale(1.05);
+}
+
+/* Анимация для иконки гамбургера */
+.hamburger-menu-btn {
+  transition: transform 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.hamburger-menu-btn:hover {
+  transform: scale(1.05) !important;
+}
+
+.hamburger-menu-btn.active .framer-1nickyg {
+  transform: rotate(45deg) translate(5px, 5px) !important;
+}
+
+.hamburger-menu-btn.active .framer-15qmgh6 {
+  opacity: 0 !important;
+  transform: scale(0) !important;
+}
+
+.hamburger-menu-btn.active .framer-1kctzd1 {
+  transform: rotate(-45deg) translate(7px, -6px) !important;
+}
+
+.hamburger-menu-btn .framer-1nickyg,
+.hamburger-menu-btn .framer-15qmgh6,
+.hamburger-menu-btn .framer-1kctzd1 {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 480px) {
+  .mobile-menu {
+    width: 280px;
+    max-width: 90vw;
+  }
+
+  .mobile-menu-header {
+    padding: 20px;
+  }
+
+  .mobile-menu-item {
+    font-size: 14px;
+    padding: 12px 20px;
+    margin: 0 12px 3px;
+  }
+
+  .mobile-menu-logo {
+    height: 30px;
+  }
+
+  .mobile-menu-close {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+}
+
+/* Предотвращение скролла body при открытом меню */
+body.menu-open {
+  overflow: hidden;
+}

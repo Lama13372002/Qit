@@ -1,0 +1,118 @@
+/* Скрытие стандартного виджета Google Translate */
+.skiptranslate {
+    display: none !important;
+}
+
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+[id^="goog-"]:not(#google_translate_element),
+.goog-tooltip,
+.goog-te-spinner-pos,
+.goog-te-balloon,
+.goog-te-ftab,
+.goog-te-menu-frame,
+.goog-te-menu,
+.goog-te-gadget,
+iframe[src*="translate.google"],
+iframe[src*="googleapis.com"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    z-index: -1 !important;
+}
+
+/* Убираем отступ сверху от Google Translate */
+body {
+    top: 0 !important;
+    position: static !important;
+}
+
+/* Скрытый элемент для Google Translate */
+#google_translate_element {
+    display: none !important;
+}
+
+/* Стили для языковых переключателей */
+.language-switcher {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 8px;
+    z-index: 1000;
+}
+
+.language-btn {
+    padding: 6px 10px;
+    border: 1px solid rgba(239, 231, 210, 0.3);
+    border-radius: 6px;
+    background: rgba(45, 45, 45, 0.8);
+    color: rgba(239, 231, 210, 0.7);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    text-decoration: none;
+    user-select: none;
+}
+
+.language-btn:hover {
+    background: rgba(239, 231, 210, 0.1);
+    color: rgb(239, 231, 210);
+    border-color: rgba(239, 231, 210, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 231, 210, 0.1);
+}
+
+.language-btn.language__img_active {
+    background: rgba(239, 231, 210, 0.15);
+    color: rgb(239, 231, 210);
+    border-color: rgba(239, 231, 210, 0.6);
+    box-shadow: 0 2px 8px rgba(239, 231, 210, 0.2);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .language-switcher {
+        top: 10px;
+        right: 10px;
+        gap: 6px;
+    }
+
+    .language-btn {
+        padding: 5px 8px;
+        font-size: 10px;
+    }
+}
+
+/* Дополнительное скрытие элементов Google Translate */
+iframe[src*="translate.google"] {
+    display: none !important;
+}
+
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+.goog-te-menu-frame {
+    display: none !important;
+}
+
+/* Убираем все изменения стилей, которые добавляет Google Translate */
+html[translate="no"] {
+    translate: yes !important;
+}
+
+/* Специальный класс для элементов, которые не должны переводиться */
+.notranslate {
+    translate: no !important;
+}

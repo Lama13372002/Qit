@@ -1,0 +1,107 @@
+/* Стили для новой карточки ресторана */
+.restaurant-info-card {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.restaurant-info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Hover эффекты для социальных сетей */
+.restaurant-info-card a[href*="instagram"]:hover {
+  border-color: rgba(239, 231, 210, 0.7) !important;
+  background-color: rgba(239, 231, 210, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+.restaurant-info-card a[href*="facebook"]:hover {
+  border-color: rgba(239, 231, 210, 0.7) !important;
+  background-color: rgba(239, 231, 210, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+.restaurant-info-card a[href*="twitter"]:hover {
+  border-color: rgba(239, 231, 210, 0.7) !important;
+  background-color: rgba(239, 231, 210, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+.restaurant-info-card a:hover svg {
+  fill: rgb(255, 255, 255) !important;
+}
+
+/* Анимация для логотипа */
+.restaurant-info-card img[alt*="Logo"],
+.restaurant-card-logo {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.restaurant-info-card:hover img[alt*="Logo"],
+.restaurant-info-card:hover .restaurant-card-logo {
+  transform: scale(1.05);
+  filter: brightness(1.3);
+}
+
+/* Адаптивные стили */
+@media (max-width: 809px) {
+  .restaurant-info-card {
+    border-radius: 16px !important;
+    /* Исправление для Safari iOS - обеспечиваем правильную прокрутку карточки */
+    min-height: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+
+  .card-content {
+    padding: 24px !important;
+    /* Исправление для Safari iOS - убеждаемся, что содержимое помещается */
+    min-height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Сохраняем размер логотипа 110px для мобильных устройств */
+  .restaurant-info-card img[alt*="Logo"],
+  .restaurant-card-logo {
+    height: 110px !important;
+  }
+}
+
+@media (min-width: 810px) and (max-width: 1199px) {
+  /* Сохраняем размер логотипа 110px для планшетов */
+  .restaurant-info-card img[alt*="Logo"],
+  .restaurant-card-logo {
+    height: 110px !important;
+  }
+
+  .card-content {
+    padding: 28px !important;
+  }
+}
+
+/* Дополнительные стили для лучшей совместимости с Safari */
+@media (max-width: 809px) and (-webkit-min-device-pixel-ratio: 2) {
+  .restaurant-info-card {
+    /* Специфичные стили для iOS Safari */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .card-content {
+    /* Убеждаемся, что flex работает правильно в Safari */
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    height: auto;
+    min-height: calc(100vh - 48px);
+  }
+}

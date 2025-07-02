@@ -1,0 +1,248 @@
+/* Custom Header Styles */
+.custom-header {
+  position: relative;
+  width: 100%;
+  z-index: 99999;
+  background: linear-gradient(135deg, rgba(10, 11, 10, 0.95), rgba(20, 21, 20, 0.95));
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(239, 231, 210, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  pointer-events: auto;
+  isolation: isolate;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Back Button Styles */
+.back-button-wrapper {
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 100000;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, rgba(239, 231, 210, 0.1), rgba(239, 231, 210, 0.05));
+  border: 1px solid rgba(239, 231, 210, 0.2);
+  border-radius: 30px;
+  color: rgb(239, 231, 210);
+  text-decoration: none;
+  font-family: "Satoshi", "Satoshi Placeholder", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  position: relative;
+  z-index: 100001;
+  pointer-events: auto;
+}
+
+.back-button:hover {
+  background: linear-gradient(135deg, rgba(239, 231, 210, 0.2), rgba(239, 231, 210, 0.1));
+  border-color: rgba(239, 231, 210, 0.4);
+  transform: translateX(-3px);
+  box-shadow: 0 6px 20px rgba(239, 231, 210, 0.1);
+}
+
+.back-button:active {
+  transform: translateX(-1px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.back-button svg {
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover svg {
+  transform: translateX(-2px);
+}
+
+.back-button span {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Logo Styles */
+.logo-wrapper {
+  flex: 0 0 auto;
+}
+
+.logo-link {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+  transform: scale(1.05);
+}
+
+.logo-img {
+  height: 50px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 12px 20px;
+  }
+
+  .back-button {
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 25px;
+  }
+
+  .back-button svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 7px;
+  }
+
+  .logo-img {
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    padding: 10px 15px;
+  }
+
+  .back-button {
+    padding: 11px 18px;
+    font-size: 13px;
+    border-radius: 23px;
+  }
+
+  .back-button svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+  }
+
+  .logo-img {
+    height: 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-content {
+    padding: 8px 12px;
+  }
+
+  .back-button {
+    padding: 10px 16px;
+    font-size: 12px;
+    border-radius: 20px;
+  }
+
+  .back-button span {
+    letter-spacing: 0.3px;
+  }
+
+  .back-button svg {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+  }
+
+  .logo-img {
+    height: 26px;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 320px) {
+  .header-content {
+    padding: 6px 10px;
+  }
+
+  .back-button {
+    padding: 9px 15px;
+    font-size: 12px;
+    border-radius: 18px;
+  }
+
+  .back-button svg {
+    width: 14px;
+    height: 14px;
+    margin-right: 4px;
+  }
+
+  .logo-img {
+    height: 24px;
+  }
+}
+
+/* Адаптивные отступы после шапки */
+.framer-sajps8[data-framer-name="Main Wrapper"] {
+  margin-top: 20px !important;
+}
+
+/* Убираем перекрытие основного контейнера */
+#main {
+  position: relative;
+  z-index: 1;
+}
+
+.framer-azYRI {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .framer-sajps8[data-framer-name="Main Wrapper"] {
+    margin-top: 15px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .framer-sajps8[data-framer-name="Main Wrapper"] {
+    margin-top: 12px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .framer-sajps8[data-framer-name="Main Wrapper"] {
+    margin-top: 10px !important;
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1200px) {
+  .header-content {
+    padding: 18px 40px;
+  }
+
+  .back-button {
+    padding: 14px 28px;
+    font-size: 15px;
+  }
+
+  .logo-img {
+    height: 55px;
+  }
+
+  .framer-sajps8[data-framer-name="Main Wrapper"] {
+    margin-top: 25px !important;
+  }
+}
